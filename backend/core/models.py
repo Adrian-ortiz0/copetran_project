@@ -21,6 +21,7 @@ class Rol(models.Model):
 class Empleado(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
+    correo = models.EmailField(max_length=100, unique=True, null=True, blank=True)
     tipo_documento = models.CharField(max_length=25, choices=[
         ('Tarjeta de identidad', 'Tarjeta de identidad'),
         ('Cedula', 'Cedula'),

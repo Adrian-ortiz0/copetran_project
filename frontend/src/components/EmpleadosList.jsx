@@ -1,17 +1,45 @@
-import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../axiosConfig";
 
 export const EmpleadosList = ({ empleados, onEdit, onDelete }) => {
+  const [roles, setRoles] = useState([]);
+  const [selectedRole, setSelectedRole] = useState(""); // Estado para el rol seleccionado
+
+  const fetchRoles = () => {
+    axiosInstance
+      .get("/roles/")
+      .then((response) => {
+        setRoles(response.data);
+      })
+      .catch((error) => {
+        console.error("Fetching error", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchRoles();
+  }, []);
+
   const navigate = useNavigate();
+
   const handleEdit = (empleado) => {
-    navigate(`/editar-empleado/${empleado.id}`, { state: { empleado } });
+    navigate(`/editar-empleado/${empleado.id}/`, { state: { empleado } });
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Estas seguro de que deseas eliminar este empleado?")) {
+    if (window.confirm("¿Estás seguro de que deseas eliminar este empleado?")) {
       onDelete(id);
     }
   };
+
+  const handleRoleChange = (e) => {
+    setSelectedRole(e.target.value);
+  };
+
+  const filteredEmpleados = selectedRole
+    ? empleados.filter((empleado) => empleado.rol.toString() === selectedRole)
+    : empleados;
 
   return (
     <>
@@ -41,7 +69,7 @@ export const EmpleadosList = ({ empleados, onEdit, onDelete }) => {
             </div>
           </div>
           <div className="empleadosList_empleados-container">
-            {empleados.map((empleado) => (
+            {filteredEmpleados.map((empleado) => (
               <div className="empleadosList_empleado" key={empleado.id}>
                 <div>
                   <p>{empleado.id}</p>
@@ -59,7 +87,7 @@ export const EmpleadosList = ({ empleados, onEdit, onDelete }) => {
                   <p>{calculateAge(empleado.fecha_nacimiento)}</p>
                 </div>
                 <div>
-                  <p>{empleado.rol}</p>
+                  <p>{empleado.rol_nombre}</p>
                 </div>
                 <div className="empleadosList_accionesButtons">
                   <button onClick={() => handleEdit(empleado)}>
@@ -84,9 +112,22 @@ export const EmpleadosList = ({ empleados, onEdit, onDelete }) => {
           </div>
         </div>
         <div className="empleadosList_button-containers">
-          <button>Contratar</button>
-          <select name="" id=""></select>
-          <button>Filtrar</button>
+          <button onClick={() => navigate("/contratar-empleado")}>
+            Contratar
+          </button>
+          <select
+            name="filtro_rol"
+            id="filtro_rol"
+            value={selectedRole}
+            onChange={handleRoleChange}
+          >
+            <option value="">Filtro por rol</option>
+            {roles.map((rol) => (
+              <option key={rol.id} value={rol.id.toString()}>
+                {rol.nombre}
+              </option>
+            ))}
+          </select>
         </div>
       </main>
     </>

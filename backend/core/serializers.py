@@ -9,9 +9,11 @@ class ClienteSerializer(serializers.ModelSerializer):
 class RolSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rol
-        fields = '__all__'
+        fields = "__all__"
 
 class EmpleadoSerializer(serializers.ModelSerializer):
+    rol_nombre = serializers.CharField(source='rol.nombre', read_only=True)
+    rol = serializers.PrimaryKeyRelatedField(queryset=Rol.objects.all())
     class Meta:
         model = Empleado
         fields = '__all__'

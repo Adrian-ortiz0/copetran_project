@@ -5,7 +5,8 @@ import { AsideMenu } from "./AsideMenu";
 
 export const GestionEmpleados = () => {
   const [empleados, setEmpleados] = useState([]);
-  const [editingEmpleado, setEditingEmpleado] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para el filtro por número de cédula
+
   const fetchEmpleados = () => {
     axiosInstance
       .get("empleados/")
@@ -13,25 +14,35 @@ export const GestionEmpleados = () => {
         setEmpleados(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching", error);
+        console.error("Error fetching empleados:", error);
       });
   };
+
   useEffect(() => {
     fetchEmpleados();
   }, []);
-  const handleEdit = (empleado) => {
-    setEditingEmpleado(empleado);
-  };
+
   const handleDelete = (id) => {
-    axiosInstance
-      .delete(`empleados/${id}`)
-      .then((response) => {
-        fetchEmpleados();
-      })
-      .catch((error) => {
-        console.error("Error deleting empleado", error);
-      });
+    if (window.confirm("¿Estás seguro de que deseas eliminar este empleado?")) {
+      console.log(`Sending DELETE request to empleados/${id}/`);
+      axiosInstance
+        .delete(`empleados/${id}/`)
+        .then((response) => {
+          console.log("Empleado eliminado correctamente:", response.data);
+          fetchEmpleados();
+        })
+        .catch((error) => {
+          console.error("Error deleting empleado", error);
+        });
+    }
   };
+
+  // Filtrar empleados por número de cédula
+  const filteredEmpleados = searchTerm
+    ? empleados.filter((empleado) =>
+        empleado.documento.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : empleados;
 
   return (
     <>
@@ -41,15 +52,20 @@ export const GestionEmpleados = () => {
         </div>
         <div className="upperBarr_inputContainer">
           <img src="../public/lupa_icon.svg" alt="" />
-          <input type="text" />
+          <input
+            type="text"
+            placeholder="Buscar por número de cédula"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <div className="upperBarrButtonBuscarEmpleado">
-          <button>Buscar Empleado</button>
+          <button onClick={() => setSearchTerm("")}>Reset</button>
         </div>
       </div>
       <main className="gestionEmpleados_menu-container">
         <AsideMenu />
-        <EmpleadosList empleados={empleados} onDelete={handleDelete} />
+        <EmpleadosList empleados={filteredEmpleados} onDelete={handleDelete} />
       </main>
     </>
   );
