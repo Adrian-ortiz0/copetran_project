@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axiosInstance from "../axiosConfig";
 import { EmpleadosList } from "./EmpleadosList";
 import { AsideMenu } from "./AsideMenu";
 
 export const GestionEmpleados = () => {
   const [empleados, setEmpleados] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para el filtro por número de cédula
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchEmpleados = () => {
     axiosInstance
@@ -37,7 +37,6 @@ export const GestionEmpleados = () => {
     }
   };
 
-  // Filtrar empleados por número de cédula
   const filteredEmpleados = searchTerm
     ? empleados.filter((empleado) =>
         empleado.documento.toLowerCase().includes(searchTerm.toLowerCase())

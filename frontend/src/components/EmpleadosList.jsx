@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
 
 export const EmpleadosList = ({ empleados, onEdit, onDelete }) => {
   const [roles, setRoles] = useState([]);
-  const [selectedRole, setSelectedRole] = useState(""); // Estado para el rol seleccionado
+  const [selectedRole, setSelectedRole] = useState("");
 
   const fetchRoles = () => {
     axiosInstance

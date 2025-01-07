@@ -68,7 +68,7 @@ export const EditarEmpleado = () => {
     <main className="editarEmpleados_main">
       <aside className="editarEmpleados_aside">
         <div className="editarEmpleadosAside_container">
-          <img src="../public/copetran_logo.png" alt="logo" />
+          <img src="/copetran_logo.png" alt="logo" />
           <h2>Edición de Empleados</h2>
           <button onClick={() => navigate("/gestion-empleados")}>Salir</button>
         </div>

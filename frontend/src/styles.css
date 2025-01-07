@@ -94,6 +94,21 @@
   cursor: pointer;
 }
 
+.homecontainer_button-container button,
+.admin_login-form button {
+  transition: all 0.3s ease;
+}
+
+.homecontainer_button-container button:hover,
+.admin_login-form button:hover {
+  transform: scale(1.1);
+}
+
+.homecontainer_button-container button:active,
+.admin_login-form button:active {
+  transform: scale(0.95);
+}
+
 .upperBarr {
   background-color: #162e50;
   color: white;
@@ -131,12 +146,31 @@
   justify-content: space-evenly;
   flex-direction: column;
   height: 100%;
-  width: 50%;
+  width: 80%;
 }
 
 .aside_menu-buttons button {
   background-color: transparent;
   cursor: pointer;
+  border: none;
+  color: #162e50;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+.aside_menu-buttons button:hover {
+  background-color: #f9f9f9;
+  color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.aside_menu-buttons button:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .menu_button-container {
@@ -176,6 +210,7 @@
   border-radius: 8px;
   text-align: left;
   border-radius: 40px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .upperBarrGestionEmpleados {
@@ -219,6 +254,30 @@
   background-color: #d9d9d9;
   outline: none;
   border: none;
+}
+
+.homecontainer_button-container button,
+.admin_login-form button,
+.aside_menu-buttons button,
+.div_button-container button,
+.div_button-containerReverse button {
+  transition: all 0.3s ease;
+}
+
+.homecontainer_button-container button:hover,
+.admin_login-form button:hover,
+.aside_menu-buttons button:hover,
+.div_button-container button:hover,
+.div_button-containerReverse button:hover {
+  transform: scale(1.1);
+}
+
+.homecontainer_button-container button:active,
+.admin_login-form button:active,
+.aside_menu-buttons button:active,
+.div_button-container button:active,
+.div_button-containerReverse button:active {
+  transform: scale(0.95);
 }
 
 .gestionEmpleados_menu-container {
