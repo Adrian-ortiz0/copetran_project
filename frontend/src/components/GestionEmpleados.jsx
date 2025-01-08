@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../axiosConfig";
-import { EmpleadosList } from "./EmpleadosList";
+import { EmpleadosMenu } from "./EmpleadosMenu";
 import { AsideMenu } from "./AsideMenu";
+import { UpperBarr } from "./UpperBarr";
 
 export const GestionEmpleados = () => {
   const [empleados, setEmpleados] = useState([]);
@@ -45,26 +46,14 @@ export const GestionEmpleados = () => {
 
   return (
     <>
-      <div className="upperBarrGestionEmpleados">
-        <div className="upperBarrGestionEmpleados_img">
-          <img src="../public/copetran_logo.png" alt="" />
-        </div>
-        <div className="upperBarr_inputContainer">
-          <img src="../public/lupa_icon.svg" alt="" />
-          <input
-            type="text"
-            placeholder="Buscar por número de cédula"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="upperBarrButtonBuscarEmpleado">
-          <button onClick={() => setSearchTerm("")}>Reset</button>
-        </div>
-      </div>
+      <UpperBarr
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        placeholder={"Buscar por numero de cedula"}
+      />
       <main className="gestionEmpleados_menu-container">
         <AsideMenu />
-        <EmpleadosList empleados={filteredEmpleados} onDelete={handleDelete} />
+        <EmpleadosMenu empleados={filteredEmpleados} onDelete={handleDelete} />
       </main>
     </>
   );

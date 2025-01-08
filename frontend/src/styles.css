@@ -189,7 +189,7 @@
 }
 .div_button-containerReverse {
   width: 50%;
-  height: 18%;
+  height: 20%;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -300,7 +300,7 @@
   font-weight: bold;
 }
 
-.empleadosList_container {
+.tableList_container {
   width: 85%;
   height: 90vh;
   background-color: #d9d9d9;
@@ -310,13 +310,13 @@
   gap: 15px;
 }
 
-.empleadosList {
+.tableList {
   width: 70%;
   height: 80%;
   background-color: white;
   border-radius: 20px;
 }
-.empleadosList_index {
+.tableList_index {
   background-color: #162e50;
   width: 100%;
   height: 10%;
@@ -326,13 +326,13 @@
   justify-content: space-around;
   align-items: center;
 }
-.empleadosList_index div {
+.tableList_index div {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.empleadosList_empleados-container {
+.tableList_data-container {
   width: 100%;
   height: 90%;
   border-radius: 0 0 20px 20px;
@@ -340,7 +340,7 @@
   flex-direction: column;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.empleadosList_empleado {
+.tableList_data {
   width: 100%;
   height: 10%;
   display: flex;
@@ -349,7 +349,7 @@
   border-top: 1px solid gray;
 }
 
-.empleadosList_empleado div {
+.tableList_data div {
   width: 100%;
   height: 100%;
   display: flex;
@@ -358,7 +358,7 @@
   font-size: 0.9rem;
 }
 
-.empleadosList_button-containers {
+.tableList_button-container {
   display: flex;
   flex-direction: column;
   margin-left: 50px;
@@ -367,7 +367,7 @@
   justify-content: space-around;
   align-items: center;
 }
-.empleadosList_button-containers select {
+.tableList_button-container select {
   width: 85%;
   height: 50px;
   border: none;
@@ -379,7 +379,7 @@
   border: none;
   outline: none;
 }
-.empleadosList_button-containers button {
+.tableList_button-container button {
   width: 80%;
   height: 50px;
   border: none;
@@ -389,10 +389,10 @@
   background-color: #162e50;
   font-weight: bold;
 }
-.empleadosList_accionesButtons {
+.tableList_accionesButtons {
   gap: 15px;
 }
-.empleadosList_accionesButtons button {
+.tableList_accionesButtons button {
   background-color: #ebebebc0;
   border-radius: 10px;
   height: 30px;

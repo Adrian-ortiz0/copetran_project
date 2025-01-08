@@ -1,11 +1,9 @@
 import React from "react";
-import "../styles.css";
 
-export const EmpleadosList = ({
+export const VehiculosList = ({
   filteredData,
-  calculateAge,
-  handleEdit,
   handleDelete,
+  handleEdit,
   indexes,
 }) => {
   return (
@@ -24,19 +22,16 @@ export const EmpleadosList = ({
               <p>{data.id}</p>
             </div>
             <div>
-              <p>{data.nombre}</p>
+              <p>{data.placa}</p>
             </div>
             <div>
-              <p>{data.apellido}</p>
+              <p>{data.numero_vehiculo}</p>
             </div>
             <div>
-              <p>{data.documento}</p>
+              <p>{data.estado}</p>
             </div>
             <div>
-              <p>{calculateAge(data.fecha_nacimiento)}</p>
-            </div>
-            <div>
-              <p>{data.rol_nombre}</p>
+              <p>{data.tipo_vehiculo_nombre}</p>
             </div>
             <div className="tableList_accionesButtons">
               <button onClick={() => handleEdit(data)}>

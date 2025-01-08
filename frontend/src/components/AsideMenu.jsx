@@ -28,7 +28,7 @@ export const AsideMenu = () => {
           />
         </button>
         <button
-          onClick={() => navigateTo("/gestion-buses")}
+          onClick={() => navigateTo("/gestion-vehiculos")}
           className="gestion_buses-button"
         >
           <img src="../public/bus_icon.svg" alt="" width={60} height={60} />

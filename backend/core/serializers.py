@@ -39,6 +39,7 @@ class RutaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class VehiculoSerializer(serializers.ModelSerializer):
+    tipo_vehiculo_nombre = serializers.CharField(source='tipo_vehiculo.nombre', read_only=True)
     class Meta:
         model = Vehiculo
         fields = '__all__'

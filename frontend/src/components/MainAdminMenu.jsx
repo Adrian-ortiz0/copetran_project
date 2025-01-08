@@ -24,7 +24,7 @@ export const MainAdminMenu = () => {
         </div>
         <div className="div_button-containerReverse">
           <button
-            onClick={() => navigateTo("/gestion-buses")}
+            onClick={() => navigateTo("/gestion-vehiculos")}
             className="gestion_buses-button"
           >
             <h3>Gestion de Vehiculos</h3>

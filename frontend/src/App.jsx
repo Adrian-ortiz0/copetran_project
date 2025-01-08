@@ -6,6 +6,7 @@ import { TiqueteroLogin } from "./components/TiqueteroLogin";
 import { GestionEmpleados } from "./components/GestionEmpleados";
 import { ContratarEmpleado } from "./components/ContratarEmpleado";
 import { EditarEmpleado } from "./components/EditarEmpleado";
+import { GestionVehiculos } from "./components/GestionVehiculos";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/gestion-empleados" element={<GestionEmpleados />} />
         <Route path="/contratar-empleado" element={<ContratarEmpleado />} />
         <Route path="/editar-empleado/:id" element={<EditarEmpleado />} />
+        <Route path="/gestion-vehiculos" element={<GestionVehiculos />} />
       </Routes>
     </Router>
   );
