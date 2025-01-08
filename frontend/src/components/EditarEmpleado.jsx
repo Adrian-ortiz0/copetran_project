@@ -65,16 +65,16 @@ export const EditarEmpleado = () => {
   };
 
   return (
-    <main className="editarEmpleados_main">
-      <aside className="editarEmpleados_aside">
-        <div className="editarEmpleadosAside_container">
+    <main className="registerEdit_interface">
+      <aside className="registerEdit_aside">
+        <div className="registerEdit_aside-container">
           <img src="/copetran_logo.png" alt="logo" />
           <h2>Edición de Empleados</h2>
           <button onClick={() => navigate("/gestion-empleados")}>Salir</button>
         </div>
       </aside>
-      <section className="editarEmpleados_section">
-        <form onSubmit={handleSubmit} className="editarEmpleados_form">
+      <section className="registerData_section">
+        <form onSubmit={handleSubmit} className="forms">
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="nombre">Nombre:</label>

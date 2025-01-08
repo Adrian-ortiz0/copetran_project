@@ -346,7 +346,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-top: 1px solid gray;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
 }
 
 .tableList_data div {
@@ -402,14 +402,13 @@
   align-items: center;
 }
 
-.contratarEmpleados_main,
-.editarEmpleados_main {
+.registerEdit_interface {
   width: 100%;
   height: 100vh;
   display: flex;
 }
-.contratarEmpleados_aside,
-.editarEmpleados_aside {
+
+.registerEdit_aside {
   width: 30%;
   height: 100vh;
   background-color: #0e2247;
@@ -418,8 +417,8 @@
   justify-content: center;
   align-items: center;
 }
-.empleadosAside_container,
-.editarEmpleadosAside_container {
+
+.registerEdit_aside-container {
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -430,29 +429,28 @@
   text-align: center;
   color: white;
 }
-.empleadosAside_container img,
-.editarEmpleadosAside_container img {
+
+.registerEdit_aside-container img {
   width: auto;
   height: 150px;
 }
-.empleadosAside_container button,
-.editarEmpleadosAside_container button {
+
+.registerEdit_aside-container button {
   width: 120px;
   height: 70px;
   border-radius: 25px;
   font-size: 1.2rem;
   cursor: pointer;
 }
-.contratarEmpleados_section,
-.editarEmpleados_section {
+
+.registerData_section {
   width: 70%;
   background-color: #d9d9d9;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.contrarEmpleados_form,
-.editarEmpleados_form {
+.forms {
   width: 60%;
   height: 80%;
   background-color: white;

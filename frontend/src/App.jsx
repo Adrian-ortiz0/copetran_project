@@ -7,6 +7,8 @@ import { GestionEmpleados } from "./components/GestionEmpleados";
 import { ContratarEmpleado } from "./components/ContratarEmpleado";
 import { EditarEmpleado } from "./components/EditarEmpleado";
 import { GestionVehiculos } from "./components/GestionVehiculos";
+import { RegistrarVehiculos } from "./components/RegistrarVehiculos";
+import { EditarVehiculos } from "./components/EditarVehiculos";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/contratar-empleado" element={<ContratarEmpleado />} />
         <Route path="/editar-empleado/:id" element={<EditarEmpleado />} />
         <Route path="/gestion-vehiculos" element={<GestionVehiculos />} />
+        <Route path="/registrar-vehiculo" element={<RegistrarVehiculos />} />
+        <Route path="/editar-vehiculo/:id" element={<EditarVehiculos />} />
       </Routes>
     </Router>
   );

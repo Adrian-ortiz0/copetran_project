@@ -52,9 +52,9 @@ export const ContratarEmpleado = () => {
 
   return (
     <>
-      <main className="contratarEmpleados_main">
-        <aside className="contratarEmpleados_aside">
-          <div className="empleadosAside_container">
+      <main className="registerEdit_interface">
+        <aside className="registerEdit_aside">
+          <div className="registerEdit_aside-container">
             <img src="../public/copetran_logo.png" alt="" />
             <h2>Contratacion de Empleados</h2>
             <button onClick={() => navigate("/gestion-empleados")}>
@@ -62,8 +62,8 @@ export const ContratarEmpleado = () => {
             </button>
           </div>
         </aside>
-        <section className="contratarEmpleados_section">
-          <form onSubmit={handleSubmit} className="contrarEmpleados_form">
+        <section className="registerData_section">
+          <form onSubmit={handleSubmit} className="forms">
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="nombre">Nombre:</label>
