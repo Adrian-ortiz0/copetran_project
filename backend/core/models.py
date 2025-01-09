@@ -46,7 +46,41 @@ class TipoVehiculo(models.Model):
 
 class Ciudad(models.Model):
     nombre = models.CharField(max_length=100)
-    departamento = models.CharField(max_length=100)
+    departamento = models.CharField(max_length=100, choices=[
+        ("Amazonas", "Amazonas"),
+        ("Antioquia", "Antioquia"),
+        ("Arauca", "Arauca"),
+        ("Atlantico", "Atlantico"),
+        ("Bogota", "Bogota"),
+        ("Bolivar", "Bolivar"),
+        ("Boyaca", "Boyaca"),
+        ("Caldas", "Caldas"),
+        ("Caqueta", "Caqueta"),
+        ("Casanara", "Casanare"),
+        ("Cauca", "Cauca"),
+        ("Cesar", "Cesar"),
+        ("Choco", "Choco"),
+        ("Cordoba", "Cordoba"),
+        ("Cundinamarca", "Cundinamarca"),
+        ("Guainia", "Guainia"),
+        ("Guaviare", "Guaviare"),
+        ("Huila", "Huila"),
+        ("La Guajira", "La Guajira"),
+        ("Magdalena", "Magdalena"),
+        ("Meta", "Meta"),
+        ("Nariño", "Nariño"),
+        ("Norte de Santander", "Norte de Santander"),
+        ("Putumayo", "Putumayo"),
+        ("Quindio", "Quindio"),
+        ("Risaralda", "Risaralda"),
+        ("San Andres y Providencia", "San Andres y Providencia"),
+        ("Santander", "Santander"),
+        ("Sucre", "Sucre"),
+        ("Tolima", "Tolima"),
+        ("Valle del Cauca", "Valle del Cauca"),
+        ("Vaupes", "Vaupes"),
+        ("Vichada", "Vichada")
+    ])
 
 class Ruta(models.Model):
     origen = models.ForeignKey(Ciudad, on_delete=models.CASCADE, related_name='origen')
