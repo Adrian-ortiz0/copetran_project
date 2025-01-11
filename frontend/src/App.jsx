@@ -11,6 +11,7 @@ import { RegistrarVehiculos } from "./components/RegistrarVehiculos";
 import { EditarVehiculos } from "./components/EditarVehiculos";
 import { GestionViajes } from "./components/GestionViajes";
 import { RegistrarViaje } from "./components/RegistrarViaje";
+import { EditarViajes } from "./components/EditarViajes";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/editar-vehiculo/:id" element={<EditarVehiculos />} />
         <Route path="/gestion-viajes" element={<GestionViajes />} />
         <Route path="/registrar-viaje" element={<RegistrarViaje />} />
+        <Route path="/editar-viaje/:id" element={<EditarViajes />} />
       </Routes>
     </Router>
   );

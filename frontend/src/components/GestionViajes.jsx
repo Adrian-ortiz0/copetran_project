@@ -7,6 +7,13 @@ import { ViajesMenu } from './ViajesMenu';
 
 export const GestionViajes = () => {
     const [viajes, setViajes] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const filteredViajes = searchTerm ? viajes.filter((viaje) => (
+        viaje.numero_vehiculo.toLowerCase().includes(searchTerm.toLowerCase())
+    )) : viajes;
+
+
     const fetchViajes = () => {
         axiosInstance.get("viajes/").then((response)=>{
             setViajes(response.data);
@@ -31,10 +38,10 @@ export const GestionViajes = () => {
     
   return (
     <>
-        <UpperBarr />
+        <UpperBarr placeholder={"Buscar viaje por numero de vehiculo"} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <main className='gestion_menu-container'>
             <AsideMenu />
-            <ViajesMenu viajes={viajes} onDelete={handleDelete}/>
+            <ViajesMenu viajes={filteredViajes} onDelete={handleDelete}/>
         </main>
     </>
   )
