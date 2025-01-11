@@ -6,7 +6,12 @@ import axiosInstance from "../axiosConfig";
 export const VehiculosMenu = ({ vehiculos, onDelete }) => {
   const navigate = useNavigate();
   const [selectedVehicle, setSelectedVehicle] = useState();
+  const [selectedEstado, setSelectedEstado] = useState();
   const [tipoVehiculo, setTipoVehiculo] = useState([]);
+  
+  const handleEstadoVehiculoChange = (e) => {
+    setSelectedEstado(e.target.value);
+  };
 
   const fetchTipoVehiculos = () => {
     axiosInstance
@@ -27,11 +32,11 @@ export const VehiculosMenu = ({ vehiculos, onDelete }) => {
     setSelectedVehicle(e.target.value);
   };
 
-  const filteresVehicles = selectedVehicle
-    ? vehiculos.filter(
-        (vehiculo) => vehiculo.tipo_vehiculo.toString() === selectedVehicle
-      )
-    : vehiculos;
+  const filteredVehicles = vehiculos.filter((vehiculo) => {
+    const vehicleMatch = selectedVehicle ? vehiculo.tipo_vehiculo.toString() === selectedVehicle : true;
+    const estadoMatch = selectedEstado ? vehiculo.estado === selectedEstado : true;
+    return vehicleMatch && estadoMatch;
+  });
 
   const handleEdit = (vehiculo) => {
     navigate(`/editar-vehiculo/${vehiculo.id}/`, { state: { vehiculo } });
@@ -53,7 +58,7 @@ export const VehiculosMenu = ({ vehiculos, onDelete }) => {
     <>
       <main className="tableList_container">
         <VehiculosList
-          filteredData={filteresVehicles}
+          filteredData={filteredVehicles}
           handleDelete={handleDelete}
           handleEdit={handleEdit}
           indexes={indexes}
@@ -74,6 +79,12 @@ export const VehiculosMenu = ({ vehiculos, onDelete }) => {
                 {vehiculo.nombre}
               </option>
             ))}
+          </select>
+          <select name="filtroEstado_vehiculo" id="filtroEstado_vehiculo" value={selectedEstado} onChange={handleEstadoVehiculoChange}>
+            <option value="">Filtro por estado</option>
+            <option value="Activo">Activo</option>
+            <option value="Mantenimiento">Mantenimiento</option>
+            <option value="Fuera de servicio">Fuera de servicio</option>
           </select>
         </div>
       </main>

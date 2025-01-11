@@ -51,7 +51,7 @@ export const GestionVehiculos = () => {
         setSearchTerm={setSearchTerm}
         placeholder={"Buscar por numero de vehiculo"}
       />
-      <main className="gestionEmpleados_menu-container">
+      <main className="gestion_menu-container">
         <AsideMenu />
         <VehiculosMenu vehiculos={filteredVehiculos} onDelete={handleDelete} />
       </main>

@@ -34,9 +34,13 @@ class CiudadSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RutaSerializer(serializers.ModelSerializer):
+    origen_nombre = serializers.ReadOnlyField(source='origen.nombre')
+    destino_nombre = serializers.ReadOnlyField(source='destino.nombre')
+
     class Meta:
         model = Ruta
-        fields = '__all__'
+        fields = "__all__"
+
 
 class VehiculoSerializer(serializers.ModelSerializer):
     tipo_vehiculo_nombre = serializers.CharField(source='tipo_vehiculo.nombre', read_only=True)
@@ -45,6 +49,9 @@ class VehiculoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ViajeSerializer(serializers.ModelSerializer):
+    numero_vehiculo = serializers.CharField(source="vehiculo.numero_vehiculo", read_only=True)
+    origen = serializers.CharField(source="ruta.origen.nombre", read_only=True)
+    destino = serializers.CharField(source="ruta.destino.nombre", read_only=True)
     class Meta:
         model = Viaje
         fields = '__all__'

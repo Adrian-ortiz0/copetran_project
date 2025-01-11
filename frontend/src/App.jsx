@@ -9,6 +9,8 @@ import { EditarEmpleado } from "./components/EditarEmpleado";
 import { GestionVehiculos } from "./components/GestionVehiculos";
 import { RegistrarVehiculos } from "./components/RegistrarVehiculos";
 import { EditarVehiculos } from "./components/EditarVehiculos";
+import { GestionViajes } from "./components/GestionViajes";
+import { RegistrarViaje } from "./components/RegistrarViaje";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/gestion-vehiculos" element={<GestionVehiculos />} />
         <Route path="/registrar-vehiculo" element={<RegistrarVehiculos />} />
         <Route path="/editar-vehiculo/:id" element={<EditarVehiculos />} />
+        <Route path="/gestion-viajes" element={<GestionViajes />} />
+        <Route path="/registrar-viaje" element={<RegistrarViaje />} />
       </Routes>
     </Router>
   );

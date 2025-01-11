@@ -51,7 +51,7 @@ export const GestionEmpleados = () => {
         setSearchTerm={setSearchTerm}
         placeholder={"Buscar por numero de cedula"}
       />
-      <main className="gestionEmpleados_menu-container">
+      <main className="gestion_menu-container">
         <AsideMenu />
         <EmpleadosMenu empleados={filteredEmpleados} onDelete={handleDelete} />
       </main>

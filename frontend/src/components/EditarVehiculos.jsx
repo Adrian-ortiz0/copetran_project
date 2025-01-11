@@ -102,7 +102,7 @@ export const EditarVehiculos = () => {
             >
               <option value="">Estado </option>
               <option value="Activo">Activo</option>
-              <option value="Mantenimiento">Mantenimiento</option>7
+              <option value="Mantenimiento">Mantenimiento</option>
               <option value="Fuera de servicio">Fuera de servicio</option>
             </select>
           </div>
