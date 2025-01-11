@@ -11,7 +11,7 @@
 }
 
 .home,
-.admin_login {
+.login {
   width: 100%;
   height: 100vh;
   background: url(../public/home_background.png) no-repeat center center;
@@ -59,7 +59,7 @@
   cursor: pointer;
 }
 
-.admin_login-form {
+.login_form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -95,7 +95,7 @@
 .form-group input::placeholder {
   color: rgba(255, 255, 255, 0.332);
 }
-.admin_login-form button {
+.login_form button {
   width: 100px;
   height: 60px;
   border-radius: 10px;
@@ -105,17 +105,17 @@
 }
 
 .homecontainer_button-container button,
-.admin_login-form button {
+.login_form button {
   transition: all 0.3s ease;
 }
 
 .homecontainer_button-container button:hover,
-.admin_login-form button:hover {
+.login_form button:hover {
   transform: scale(1.1);
 }
 
 .homecontainer_button-container button:active,
-.admin_login-form button:active {
+.login_form button:active {
   transform: scale(0.95);
 }
 
@@ -267,7 +267,7 @@
 }
 
 .homecontainer_button-container button,
-.admin_login-form button,
+.login_form button,
 .aside_menu-buttons button,
 .div_button-container button,
 .div_button-containerReverse button {
@@ -275,7 +275,7 @@
 }
 
 .homecontainer_button-container button:hover,
-.admin_login-form button:hover,
+.login_formbutton:hover,
 .aside_menu-buttons button:hover,
 .div_button-container button:hover,
 .div_button-containerReverse button:hover {
@@ -283,7 +283,7 @@
 }
 
 .homecontainer_button-container button:active,
-.admin_login-form button:active,
+.login_form button:active,
 .aside_menu-buttons button:active,
 .div_button-container button:active,
 .div_button-containerReverse button:active {

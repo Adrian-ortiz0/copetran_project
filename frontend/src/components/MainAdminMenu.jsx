@@ -14,10 +14,10 @@ export const MainAdminMenu = () => {
             className="gestion_empleados-button"
           >
             <img
-              src="../public/empleados_icon.svg"
+              src="../public/empleados_icon.png"
               alt=""
-              width={90}
-              height={90}
+              width={80}
+              height={80}
             />
             <h3>Gestion de Empleados</h3>
           </button>
@@ -29,7 +29,7 @@ export const MainAdminMenu = () => {
           >
             <h3>Gestion de Vehiculos</h3>
 
-            <img src="../public/bus_icon.svg" alt="" width={120} height={120} />
+            <img src="../public/bus_icon.png" alt="" width={80} height={80} />
           </button>
         </div>
         <div className="div_button-container">
@@ -38,10 +38,10 @@ export const MainAdminMenu = () => {
             className="gestion_viajes-button"
           >
             <img
-              src="../public/tickets_icon.svg"
+              src="../public/ticket_icon.png"
               alt=""
-              width={130}
-              height={130}
+              width={80}
+              height={80}
             />
             <h3>Gestion de Viajes</h3>
           </button>

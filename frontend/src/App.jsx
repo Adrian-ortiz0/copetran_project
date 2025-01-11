@@ -14,6 +14,8 @@ import { RegistrarViaje } from "./components/RegistrarViaje";
 import { EditarViajes } from "./components/EditarViajes";
 import { GestionRutas } from "./components/GestionRutas";
 import { RegistrarRutas } from "./components/RegistrarRutas";
+import { TiqueteroMenu } from "./components/TiqueteroMenu";
+import { GestionClientes } from "./components/GestionClientes";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
         <Route path="/editar-viaje/:id" element={<EditarViajes />} />
         <Route path="/rutas" element={<GestionRutas />} />
         <Route path="/crear-rutas" element={<RegistrarRutas />} />
+        <Route path="/tiquetero-menu" element={<TiqueteroMenu />} />
+        <Route path="/gestion-usuarios" element={<GestionClientes />} />
       </Routes>
     </Router>
   );

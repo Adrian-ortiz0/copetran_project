@@ -11,18 +11,19 @@ export const TiqueteroLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email == "copetran@gmail.com" && password == "copetran") {
-      navigate("/admin-menu");
+      window.alert("Bienvenido")
+      navigate("/tiquetero-menu");
     } else {
       setError("Credenciales Incorrectas");
     }
   };
 
   return (
+    <div className="login">
     <div className="login-container">
-      <h1>Login Tiquetero</h1>
-      <form onSubmit={handleSubmit}>
+      <img src="../public/copetran_logo.png" alt="" />
+      <form onSubmit={handleSubmit} className="login_form">
         <div className="form-group">
-          <label>Email</label>
           <input
             type="email"
             placeholder="Enter email"
@@ -32,7 +33,6 @@ export const TiqueteroLogin = () => {
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
           <input
             type="password"
             placeholder="Password"
@@ -44,6 +44,7 @@ export const TiqueteroLogin = () => {
         {error && <p className="error-message">{error}</p>}
         <button type="submit">Login</button>
       </form>
+    </div>
     </div>
   );
 };

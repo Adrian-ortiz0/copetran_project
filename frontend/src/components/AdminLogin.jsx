@@ -21,10 +21,10 @@ export const AdminLogin = () => {
   };
 
   return (
-    <div className="admin_login">
+    <div className="login">
       <div className="login-container">
         <img src="../public/copetran_logo.png" alt="" />
-        <form onSubmit={handleSubmit} className="admin_login-form">
+        <form onSubmit={handleSubmit} className="login_form">
           <div className="form-group">
             <input
               type="email"
