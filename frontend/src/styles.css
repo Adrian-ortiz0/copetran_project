@@ -82,6 +82,16 @@
   color: white;
   outline: none;
 }
+
+.form-group select {
+  width: 60%;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.236);
+  color: white;
+  outline: none;
+}
 .form-group input::placeholder {
   color: rgba(255, 255, 255, 0.332);
 }
@@ -474,11 +484,22 @@
   font-size: 14px;
   color: #333;
 }
-
-.form-group input,
-.form-group select {
+.form-group select{
   height: 35px;
-  width: auto;
+  min-width: 100%;
+  border: 1px solid #ccc;
+  background-color: #cccccc74;
+  border-radius: 20px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: black;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input {
+  height: 35px;
+  min-width: 90%;
   border: 1px solid #ccc;
   background-color: #cccccc74;
   border-radius: 20px;

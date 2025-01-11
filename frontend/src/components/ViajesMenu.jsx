@@ -39,6 +39,9 @@ export const ViajesMenu = ({viajes, onDelete}) => {
           <button onClick={() => navigate("/registrar-viaje")}>
             Nuevo viaje
           </button>
+          <button onClick={() => navigate("/rutas")}>
+            Rutas
+          </button>
           <select name="filtroEstado_viaje" id="filtroEstado_viaje" value={selectedEstado} onChange={handleEstadoChange}>
             <option value="">Filtro por estado</option>
             <option value="Programado">Programado</option>
