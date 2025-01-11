@@ -16,6 +16,7 @@ import { GestionRutas } from "./components/GestionRutas";
 import { RegistrarRutas } from "./components/RegistrarRutas";
 import { TiqueteroMenu } from "./components/TiqueteroMenu";
 import { GestionClientes } from "./components/GestionClientes";
+import { RegistrarUsuarios } from "./components/RegistrarUsuarios";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/crear-rutas" element={<RegistrarRutas />} />
         <Route path="/tiquetero-menu" element={<TiqueteroMenu />} />
         <Route path="/gestion-usuarios" element={<GestionClientes />} />
+        <Route path="/registrar-usuarios" element={<RegistrarUsuarios />} />
       </Routes>
     </Router>
   );
