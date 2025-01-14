@@ -85,12 +85,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'copetran',
-        'USER': 'root',
-        'PASSWORD': '7328',
+        'USER': 'campus2023',
+        'PASSWORD': 'campus2023',
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+
+
 
 
 
