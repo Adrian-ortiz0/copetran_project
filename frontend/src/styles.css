@@ -539,3 +539,47 @@
 .submit-button:hover {
   background-color: #155bb5;
 }
+
+/* Venta de tickert */
+
+.cedula_form-container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(../public/home_background.png) no-repeat center center;
+  background-size: cover;
+}
+
+.cedula_form {
+  width: 25%;
+  height: 55%;
+  background-color: #162e50; 
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border-radius: 15px; 
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #ffffff; 
+}
+
+.cedula_form-button{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.cedula_form-button button{
+  width: 30%;
+  height: 35px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+#labelCedula {
+  color: white; 
+}

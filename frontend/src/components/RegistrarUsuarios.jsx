@@ -17,12 +17,13 @@ export const RegistrarUsuarios = () => {
     setFormData({ ...formData, [name]: value });
   };
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    console.log(formData);
     axiosInstance
       .post("clientes/", formData)
       .then((response) => {
         window.alert("Cliente registrado exitosamente");
-        navigate("/gestion-usuarios");
+        navigate();
       })
       .catch((error) => {
         console.error("Error creating cliente" + error);
@@ -76,6 +77,7 @@ export const RegistrarUsuarios = () => {
                   value={formData.tipo_documento}
                   required
                 >
+                  <option value="">Elegir Documento</option>
                   <option value="Cedula">Cedula</option>
                   <option value="Tarjeta de identidad">
                     Tarjeta de identidad
