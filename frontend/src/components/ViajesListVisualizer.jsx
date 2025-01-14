@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ViajesListVisualizer = ({filteredData, indexes}) => {
+export const ViajesListVisualizer = ({filteredData, indexes, onSeleccionarViaje}) => {
 
   return (
     <div className="tableList">
@@ -30,10 +30,12 @@ export const ViajesListVisualizer = ({filteredData, indexes}) => {
                 <p>{data.origen + " - " + data.destino}</p>
             </div>
             <div>
-                <p>Precio</p>
+                <p>{data.precio_ruta}</p>
             </div>
             <div>
-                <input type="checkbox" name="viaje" id="viaje" />
+                <button onClick={() => onSeleccionarViaje(data)}>
+                  Seleccionar
+                </button>
             </div>
           </div>
         ))}

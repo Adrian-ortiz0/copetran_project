@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save 
+from django.dispatch import receiver
 
 # Create your models here.
 
@@ -13,6 +15,8 @@ class Cliente(models.Model):
     documento = models.CharField(max_length=100, unique=True)
     fecha_nacimiento = models.DateField()
     telefono = models.CharField(max_length=25)
+    
+
 
 class Rol(models.Model):
     nombre = models.CharField(max_length=100)
@@ -32,9 +36,6 @@ class Empleado(models.Model):
     fecha_nacimiento = models.DateField()
     rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
 
-class Asiento(models.Model):
-    numero = models.CharField(max_length=3)
-    ocupado = models.BooleanField(default=False)
 
 class TipoVehiculo(models.Model):
     nombre = models.CharField(max_length=100)
@@ -97,6 +98,10 @@ class Vehiculo(models.Model):
         ('Fuera de servicio', 'Fuera de servicio')
     ], default='Activo')
     tipo_vehiculo = models.ForeignKey(TipoVehiculo, on_delete=models.CASCADE)
+    
+class Asiento(models.Model):
+    numero = models.CharField(max_length=3)
+    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE, null=True)
 
 class Viaje(models.Model):
     vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
@@ -117,6 +122,11 @@ class ViajePiloto(models.Model):
         ('Principal', 'Principal'),
         ('Copiloto', 'Copiloto')
     ])
+    
+class ViajeAsiento(models.Model):
+    viaje = models.ForeignKey(Viaje, on_delete=models.CASCADE, null=True)
+    asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE, null=True)
+    ocupado = models.BooleanField(default=False)
 
 class Tiquete(models.Model):
     numero_factura = models.CharField(max_length=100)
@@ -126,12 +136,17 @@ class Tiquete(models.Model):
     ])
     descuento = models.DecimalField(max_digits=10, decimal_places=2)
     total_con_descuento = models.DecimalField(max_digits=10, decimal_places=2)
-    viaje = models.ForeignKey(Viaje, on_delete=models.CASCADE)
+    viaje_asiento = models.ForeignKey(ViajeAsiento, on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)
-    empleado_venta = models.ForeignKey(Empleado, on_delete=models.CASCADE, related_name='empleado_venta')
     fecha_venta = models.DateField()
 
-class ViajeAsiento(models.Model):
-    viaje = models.ForeignKey(Viaje, on_delete=models.CASCADE)
-    asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)
+    
+
+@receiver(post_save, sender=Viaje)
+def crear_asientos_disponibles(sender, instance, created, **kwargs):
+    if created:
+        asientos = Asiento.objects.filter(vehiculo=instance.vehiculo)
+        for asiento in asientos:
+            ViajeAsiento.objects.create(viaje=instance, asiento=asiento)
+
+

@@ -19,11 +19,11 @@ export const VentaTickets = () => {
         setClienteExiste(true);
         setCliente(foundCliente);
         alert("Cliente: " + cliente.nombre + " encontrado")
-        navigate("/seleccion-viajes")
+        navigate("/seleccion-viajes", {state: {cliente: foundCliente}})
       } else {
         setClienteExiste(false);
         alert("Cliente no existe en la base de datos, se pasará a registrar");
-        navigate("/registrar-usuarios");
+        navigate("/registrar-usuarios", {state: {documento}});
       }
     }).catch((error) => {
       console.error("Error fetching clientes:", error);

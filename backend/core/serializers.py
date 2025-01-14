@@ -52,6 +52,7 @@ class ViajeSerializer(serializers.ModelSerializer):
     numero_vehiculo = serializers.CharField(source="vehiculo.numero_vehiculo", read_only=True)
     origen = serializers.CharField(source="ruta.origen.nombre", read_only=True)
     destino = serializers.CharField(source="ruta.destino.nombre", read_only=True)
+    precio_ruta = serializers.DecimalField(max_digits=10, decimal_places=2, source="ruta.precio", read_only=True)
     class Meta:
         model = Viaje
         fields = '__all__'
