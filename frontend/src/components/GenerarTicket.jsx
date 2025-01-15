@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosConfig";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 export const GenerarTicket = () => {
   const location = useLocation();
@@ -12,10 +14,12 @@ export const GenerarTicket = () => {
   }
 
   const today = new Date();
-  const fechaActual = today.getFullYear() + '-' + 
-    String(today.getMonth() + 1).padStart(2, '0') + '-' + 
-    String(today.getDate()).padStart(2, '0');
-
+  const fechaActual =
+    today.getFullYear() +
+    "-" +
+    String(today.getMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(today.getDate()).padStart(2, "0");
 
   const [formData, setformData] = useState({
     numero_factura: generarNumeroFactura(),
@@ -23,8 +27,8 @@ export const GenerarTicket = () => {
     descuento: 0,
     total_con_descuento: viaje.precio_ruta,
     fecha_venta: fechaActual,
-    viaje_asiento: asiento.id, 
-    cliente: cliente.id, 
+    viaje_asiento: asiento.id,
+    cliente: cliente.id,
   });
 
   const handleChange = (e) => {
@@ -40,12 +44,62 @@ export const GenerarTicket = () => {
   };
 
   const actualizarEstadoAsiento = (idAsiento) => {
-    axiosInstance.put(`viaje_asientos/${idAsiento}/`, {ocupado: true}).then((response) => {
-      console.log("Estado ocupado")
-    }).catch((error) => {
-      console.error("Error ocupando asiento" + error)
-    })
-  }
+    axiosInstance
+      .put(`viaje_asientos/${idAsiento}/`, { ocupado: true })
+      .then((response) => {
+        console.log("Estado ocupado");
+      })
+      .catch((error) => {
+        console.error("Error ocupando asiento" + error);
+      });
+  };
+
+  const generarPDF = () => {
+    const doc = new jsPDF();
+  
+    doc.setFontSize(20);
+    doc.text("Ticket de Viaje - Copetran", 20, 20);
+  
+    const imgURL = `${window.location.origin}/copetran_logo2.png`;
+    const img = new Image();
+    img.src = imgURL;
+  
+    img.onload = () => {
+      doc.addImage(img, "PNG", 20, 15, 50, 50);
+  
+      doc.setFontSize(12);
+      doc.text(`Nombre: ${cliente.nombre} ${cliente.apellido}`, 20, 60);
+      doc.text(`Vehículo: ${asiento.vehiculo_numero}`, 20, 70);
+      doc.text(`Origen: ${viaje.origen}`, 20, 80);
+      doc.text(`Destino: ${viaje.destino}`, 20, 90);
+      doc.text(`Asiento: ${asiento.asiento_numero}`, 20, 100);
+      doc.text(`Método de Pago: ${formData.tipo_pago}`, 20, 110);
+      doc.text(`Fecha: ${fechaActual}`, 20, 120);
+  
+      doc.autoTable({
+        startY: 130,
+        head: [["Descripción", "Precio"]],
+        body: [
+          ["Precio del Viaje", viaje.precio_ruta],
+          ["Descuento", formData.descuento],
+          ["Total con Descuento", formData.total_con_descuento],
+        ],
+      });
+  
+      doc.setFontSize(10);
+      doc.text(
+        "Gracias por viajar con Copetran",
+        20,
+        doc.internal.pageSize.height - 10
+      );
+  
+      doc.save(`ticket_${formData.numero_factura}.pdf`);
+    };
+  
+    img.onerror = () => {
+      console.error("Error al cargar la imagen");
+    };
+  };  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +107,8 @@ export const GenerarTicket = () => {
       .post("tiquetes/", formData)
       .then((response) => {
         window.alert("¡Ticket generado con éxito!");
-        actualizarEstadoAsiento(asiento.id)
+        actualizarEstadoAsiento(asiento.id);
+        generarPDF();
         navigate("/tiquetero-menu");
       })
       .catch((error) => {

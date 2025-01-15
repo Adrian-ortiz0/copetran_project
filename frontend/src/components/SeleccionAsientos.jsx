@@ -32,7 +32,7 @@ export const SeleccionAsientos = () => {
       <main className='gestion_menu-container'>
         <AsideMenuTiquets />
         <main className='tableList_container'>
-          <AsientosList asientos={asientosViaje} indexes={["ID", "Número de Asiento", "Estado"]} cliente={cliente} viaje={viaje} />
+          <AsientosList asientos={asientosViaje} indexes={["ID", "Número de Asiento", "Estado", "Compra"]} cliente={cliente} viaje={viaje} />
         </main>
       </main>
     </>
