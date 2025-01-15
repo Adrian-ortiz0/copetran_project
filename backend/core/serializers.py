@@ -14,11 +14,14 @@ class RolSerializer(serializers.ModelSerializer):
 class EmpleadoSerializer(serializers.ModelSerializer):
     rol_nombre = serializers.CharField(source='rol.nombre', read_only=True)
     rol = serializers.PrimaryKeyRelatedField(queryset=Rol.objects.all())
+
     class Meta:
         model = Empleado
         fields = '__all__'
 
 class AsientoSerializer(serializers.ModelSerializer):
+    vehiculo_numero = serializers.CharField(source='vehiculo.numero_vehiculo', read_only=True)
+
     class Meta:
         model = Asiento
         fields = '__all__'
@@ -41,9 +44,9 @@ class RutaSerializer(serializers.ModelSerializer):
         model = Ruta
         fields = "__all__"
 
-
 class VehiculoSerializer(serializers.ModelSerializer):
     tipo_vehiculo_nombre = serializers.CharField(source='tipo_vehiculo.nombre', read_only=True)
+
     class Meta:
         model = Vehiculo
         fields = '__all__'
@@ -53,6 +56,7 @@ class ViajeSerializer(serializers.ModelSerializer):
     origen = serializers.CharField(source="ruta.origen.nombre", read_only=True)
     destino = serializers.CharField(source="ruta.destino.nombre", read_only=True)
     precio_ruta = serializers.DecimalField(max_digits=10, decimal_places=2, source="ruta.precio", read_only=True)
+
     class Meta:
         model = Viaje
         fields = '__all__'
@@ -68,6 +72,9 @@ class TiqueteSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ViajeAsientoSerializer(serializers.ModelSerializer):
+    asiento_numero = serializers.CharField(source='asiento.numero', read_only=True)
+    vehiculo_numero = serializers.CharField(source='asiento.vehiculo.numero_vehiculo', read_only=True)
+
     class Meta:
         model = ViajeAsiento
-        fields = '__all__'
+        fields = ['id', 'viaje', 'asiento', 'asiento_numero', 'vehiculo_numero', 'ocupado']

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ViajesList } from './ViajesList';
 import { ViajesListVisualizer } from './ViajesListVisualizer';
 
-export const SeleccionViajesMenu = ({viajes, onSeleccionarViaje}) => {
+export const SeleccionViajesMenu = ({viajes, onSeleccionarViaje, }) => {
     const navigate = useNavigate();
     const indexes = ["ID", "Fecha Salida", "Hora Salida", "Vehiculo", "Ruta", "Precio", "Seleccion"];
 

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
-from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import viewsets, generics
 from .models import Cliente, Rol, Empleado, Asiento, TipoVehiculo, Ciudad, Ruta, Vehiculo, Viaje, ViajePiloto, Tiquete, ViajeAsiento
 from .serializers import ClienteSerializer, RolSerializer, EmpleadoSerializer, AsientoSerializer, TipoVehiculoSerializer, CiudadSerializer, RutaSerializer, VehiculoSerializer, ViajeSerializer, ViajePilotoSerializer, TiqueteSerializer, ViajeAsientoSerializer
 
@@ -51,3 +54,10 @@ class TiqueteViewSet(viewsets.ModelViewSet):
 class ViajeAsientoViewSet(viewsets.ModelViewSet):
     queryset = ViajeAsiento.objects.all()
     serializer_class = ViajeAsientoSerializer
+
+class ViajeAsientoListView(APIView):
+    def get(self, request, viaje_id):
+        asientos = ViajeAsiento.objects.filter(viaje_id=viaje_id)
+        serializer = ViajeAsientoSerializer(asientos, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+

@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from .views import ViajeAsientoListView
 from .views import ClienteViewSet, RolViewSet, EmpleadoViewSet, AsientoViewSet, TipoVehiculoViewSet, CiudadViewSet, RutaViewSet, VehiculoViewSet, ViajeViewSet, ViajePilotoViewSet, TiqueteViewSet, ViajeAsientoViewSet
 
 router = DefaultRouter()
@@ -18,4 +19,5 @@ router.register(r'viaje_asientos', ViajeAsientoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('api/viajes/<int:viaje_id>/asientos/', ViajeAsientoListView.as_view(), name='viaje-asiento-list'),
 ]

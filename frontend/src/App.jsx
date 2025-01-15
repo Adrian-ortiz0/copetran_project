@@ -20,6 +20,7 @@ import { RegistrarUsuarios } from "./components/RegistrarUsuarios";
 import { VentaTickets } from "./components/VentaTickets";
 import { SeleccionViajes } from "./components/SeleccionViajes";
 import { SeleccionAsientos } from "./components/SeleccionAsientos";
+import { GenerarTicket } from "./components/GenerarTicket";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/venta-tickets" element={<VentaTickets />}/>
         <Route path="/seleccion-viajes" element={<SeleccionViajes />} />
         <Route path="/seleccionar-asientos" element={<SeleccionAsientos />} />
+        <Route path="/generar-ticket" element={<GenerarTicket />} />
       </Routes>
     </Router>
   );
