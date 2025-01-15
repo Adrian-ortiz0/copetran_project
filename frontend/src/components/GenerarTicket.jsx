@@ -58,7 +58,7 @@ export const GenerarTicket = () => {
     const doc = new jsPDF();
   
     doc.setFontSize(20);
-    doc.text("Ticket de Viaje - Copetran", 20, 20);
+    doc.text("Ticket de Viajes - Copetran", 20, 20);
   
     const imgURL = `${window.location.origin}/copetran_logo2.png`;
     const img = new Image();
