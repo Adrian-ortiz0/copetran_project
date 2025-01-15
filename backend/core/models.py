@@ -139,6 +139,7 @@ class Tiquete(models.Model):
     viaje_asiento = models.ForeignKey(ViajeAsiento, on_delete=models.CASCADE, null=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     fecha_venta = models.DateField()
+    
 
     
 
