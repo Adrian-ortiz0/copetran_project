@@ -60,14 +60,25 @@ export const GenerarTicket = () => {
 
             <div className="form-row">
               <div className="form-group">
-                <p>Precio: {viaje.precio_ruta}</p>
-                <p>Vehiculo: {asiento.vehiculo_numero}</p>
-                <p>
-                  Viaje: {viaje.origen} - {viaje.destino}
-                </p>
+                <label htmlFor="precio_ruta">Precio:</label>
+                <input type="read" name="precio_ruta" value={viaje.precio_ruta}/>
+              </div>
+
+              <div className="form-group">
+                  <label htmlFor="vehiculo_numero">Vehiculo Numero:</label>
+                  <input type="read" value={asiento.vehiculo_numero} name="vehiculo_numero" />
               </div>
             </div>
-
+            <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="viaje">Origen:</label>
+              <input type="origen" value={viaje.origen}/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="viaje">Destino:</label>
+              <input type="destino" value={viaje.destino} />
+            </div>
+            </div>
             <p>Asiento: {asiento.asiento_numero}</p>
           </form>
         </section>
