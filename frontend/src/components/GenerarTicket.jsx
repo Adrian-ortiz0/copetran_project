@@ -39,12 +39,21 @@ export const GenerarTicket = () => {
     });
   };
 
+  const actualizarEstadoAsiento = (idAsiento) => {
+    axiosInstance.put(`viaje_asientos/${idAsiento}/`, {ocupado: true}).then((response) => {
+      console.log("Estado ocupado")
+    }).catch((error) => {
+      console.error("Error ocupando asiento" + error)
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosInstance
       .post("tiquetes/", formData)
       .then((response) => {
         window.alert("¡Ticket generado con éxito!");
+        actualizarEstadoAsiento(asiento.id)
         navigate("/tiquetero-menu");
       })
       .catch((error) => {
